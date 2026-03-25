@@ -1,23 +1,81 @@
-import { ArrowRight, Briefcase, Mail, Link, FileText, CheckCircle2 } from "lucide-react";
+function ArrowRightIcon({ className = "h-4 w-4" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <path d="M5 12h14" />
+      <path d="m12 5 7 7-7 7" />
+    </svg>
+  );
+}
+
+function MailIcon({ className = "h-5 w-5" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="m4 7 8 6 8-6" />
+    </svg>
+  );
+}
+
+function LinkIcon({ className = "h-5 w-5" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <path d="M10 13a5 5 0 0 0 7.07 0l2.83-2.83a5 5 0 0 0-7.07-7.07L10.7 5.23" />
+      <path d="M14 11a5 5 0 0 0-7.07 0L4.1 13.83a5 5 0 1 0 7.07 7.07L13.3 18.77" />
+    </svg>
+  );
+}
+
+function FileTextIcon({ className = "h-5 w-5" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+      <path d="M14 2v6h6" />
+      <path d="M16 13H8" />
+      <path d="M16 17H8" />
+      <path d="M10 9H8" />
+    </svg>
+  );
+}
+
+function CheckCircleIcon({ className = "h-5 w-5" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <circle cx="12" cy="12" r="10" />
+      <path d="m9 12 2 2 4-4" />
+    </svg>
+  );
+}
+
+type CaseStudy = {
+  title: string;
+  label?: string;
+  summary: string;
+  details: string[];
+};
+
+type Principle = {
+  title: string;
+  text: string;
+};
 
 export default function KedarPortfolio() {
-    const caseStudies = [
-   {
+  const caseStudies: CaseStudy[] = [
+    {
       title: "Cross-functional Program Execution",
       label: "TPM / Execution Leadership / Program Delivery",
       summary:
         "Owned execution across distributed teams by converting fragmented updates into structured plans, clear ownership, and measurable progress across program milestones.",
       details: [
-                "Managed ~$1M+ program portfolio across multiple client implementations",
+        "Managed ~$1M+ program portfolio across multiple client implementations",
         "Led 5 cross-functional teams across engineering, QA, and client stakeholders",
         "Drove alignment across time zones to unblock delivery and maintain execution momentum",
         "Improved visibility through structured tracking, reporting, and prioritization",
         "Sustained delivery in high-dependency environments with minimal escalations",
       ],
     },
-      {
+    {
       title: "Enterprise OMS Implementations (Williams-Sonoma)",
-      label: " ",
+      label: "B2B SaaS / Order Management",
       summary:
         "Drove post-sales implementations of Sterling OMS across 3–4 month cycles, aligning engineering, QA, and client stakeholders to deliver stable, production-ready releases impacting order lifecycle operations.",
       details: [
@@ -26,10 +84,9 @@ export default function KedarPortfolio() {
         "Improved release predictability through tight coordination across onsite, offshore, and client teams",
       ],
     },
-    
     {
-      title: "PushCrew (Startup) – End to End QA & Support Foundations",
-      label: "",
+      title: "PushCrew (Startup) – End-to-End QA & Support Foundations",
+      label: "Startup / Product Quality",
       summary:
         "Built QA and support processes from scratch for a B2B marketing automation platform, improving product reliability, customer response efficiency, and release confidence.",
       details: [
@@ -37,21 +94,21 @@ export default function KedarPortfolio() {
         "Validated product behavior through JavaScript and API-level testing",
         "Improved support efficiency via structured ticketing, documentation, and response workflows",
       ],
-    }
+    },
   ];
 
-  const strengths = [
+  const strengths: string[] = [
     "Technical Program Management",
     "Cross-functional Delivery",
     "Stakeholder Alignment",
     "Release Coordination",
-    "End to end QA Strategy",
+    "End-to-End QA Strategy",
     "Risk and Blocker Management",
     "Automation Testing",
     "Offshore Coordination",
   ];
 
-  const principles = [
+  const principles: Principle[] = [
     {
       title: "Create structure from ambiguity",
       text: "I break complex, cross-team work into clear priorities, owners, dependencies, and visible next steps.",
@@ -69,24 +126,35 @@ export default function KedarPortfolio() {
   return (
     <div
       className="min-h-screen bg-[#f8fafc] text-slate-900"
-      style={{ fontFamily: '"SF Pro Text","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif' }}
+      style={{
+        fontFamily:
+          '"SF Pro Text","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif',
+      }}
     >
       <section className="mx-auto max-w-7xl px-6 pb-20 pt-8 md:px-10 md:pb-28 md:pt-10">
         <header className="sticky top-4 z-50 flex items-center justify-between rounded-full border border-slate-200 bg-white/90 px-5 py-3 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-white/80">
-          <div className="text-sm font-semibold tracking-[0.18em] text-slate-600 uppercase">
+          <div className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-600">
             Kedar Tiwaskar
           </div>
           <nav className="hidden gap-6 text-sm text-slate-600 md:flex">
-            <a href="#work" className="transition hover:text-slate-900">Work</a>
-            <a href="#approach" className="transition hover:text-slate-900">Approach</a>
-            <a href="#skills" className="transition hover:text-slate-900">Skills</a>
-            <a href="#contact" className="transition hover:text-slate-900">Contact</a>
+            <a href="#work" className="transition hover:text-slate-900">
+              Work
+            </a>
+            <a href="#approach" className="transition hover:text-slate-900">
+              Approach
+            </a>
+            <a href="#skills" className="transition hover:text-slate-900">
+              Skills
+            </a>
+            <a href="#contact" className="transition hover:text-slate-900">
+              Contact
+            </a>
           </nav>
         </header>
 
         <div className="mt-14 grid gap-10 md:grid-cols-[1.2fr_0.8fr] md:items-end">
           <div>
-            <div className="inline-flex items-center rounded-full bg-slate-100 px-4 py-2 text-xs font-medium tracking-[0.2em] text-slate-600 uppercase">
+            <div className="inline-flex items-center rounded-full bg-slate-100 px-4 py-2 text-xs font-medium uppercase tracking-[0.2em] text-slate-600">
               Technical Program Manager
             </div>
             <h1 className="mt-6 max-w-2xl text-2xl font-semibold leading-snug tracking-tight md:text-3xl">
@@ -100,7 +168,7 @@ export default function KedarPortfolio() {
                 href="#work"
                 className="inline-flex items-center gap-2 rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5"
               >
-                View portfolio <ArrowRight className="h-4 w-4" />
+                View portfolio <ArrowRightIcon className="h-4 w-4" />
               </a>
               <a
                 href="#contact"
@@ -116,7 +184,9 @@ export default function KedarPortfolio() {
               <div className="rounded-2xl bg-slate-50 p-5">
                 <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Experience</p>
                 <p className="mt-2 text-3xl font-semibold">12+ years</p>
-                <p className="mt-2 text-sm leading-7 text-slate-600">Quality engineering, delivery coordination, enterprise systems, and cross-team execution.</p>
+                <p className="mt-2 text-sm leading-7 text-slate-600">
+                  Quality engineering, delivery coordination, enterprise systems, and cross-team execution.
+                </p>
               </div>
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="rounded-2xl bg-slate-50 p-5">
@@ -160,7 +230,7 @@ export default function KedarPortfolio() {
               Programs and execution stories
             </h2>
           </div>
-          
+
           <p className="max-w-2xl text-sm leading-7 text-slate-600">
             A few examples that reflect how I lead through coordination, delivery discipline, and stakeholder alignment.
           </p>
@@ -168,20 +238,19 @@ export default function KedarPortfolio() {
 
         <div className="space-y-6">
           {caseStudies.map((study) => (
-            <div
-              key={study.title}
-              className="rounded-[32px] border border-slate-200 bg-white p-8 shadow-sm"
-            >
+            <div key={study.title} className="rounded-[32px] border border-slate-200 bg-white p-8 shadow-sm">
               <div className="grid gap-8 md:grid-cols-[0.9fr_1.1fr]">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">{study.label}</p>
+                  {study.label ? (
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">{study.label}</p>
+                  ) : null}
                   <h3 className="mt-3 text-2xl font-semibold">{study.title}</h3>
                   <p className="mt-4 text-sm leading-8 text-slate-600">{study.summary}</p>
                 </div>
                 <div className="grid gap-4">
                   {study.details.map((detail) => (
                     <div key={detail} className="flex gap-3 rounded-2xl bg-slate-50 p-4">
-                      <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-slate-700" />
+                      <CheckCircleIcon className="mt-0.5 h-5 w-5 shrink-0 text-slate-700" />
                       <p className="text-sm leading-7 text-slate-700">{detail}</p>
                     </div>
                   ))}
@@ -232,7 +301,7 @@ export default function KedarPortfolio() {
               href="mailto:kedar.tiwaskar@gmail.com"
               className="inline-flex items-center gap-2 rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white"
             >
-              <Mail className="h-4 w-4" /> Email me
+              <MailIcon className="h-4 w-4" /> Email me
             </a>
           </div>
 
@@ -243,7 +312,7 @@ export default function KedarPortfolio() {
               rel="noopener noreferrer"
               className="rounded-2xl border border-slate-200 bg-slate-50 p-5 transition hover:bg-slate-100"
             >
-              <Link className="h-5 w-5 text-slate-700" />
+              <LinkIcon className="h-5 w-5 text-slate-700" />
               <p className="mt-3 text-sm font-semibold">LinkedIn</p>
               <p className="mt-1 text-sm text-slate-600">View profile</p>
             </a>
@@ -251,20 +320,22 @@ export default function KedarPortfolio() {
               href="https://drive.google.com/file/d/1wyPv2bxuBUVdtBi2Vxzd_llFXQ8wu8oE/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-2xl border border-slate-200 bg-slate-50 p-5 text-left transition hover:bg-slate-100 block"
+              className="block rounded-2xl border border-slate-200 bg-slate-50 p-5 text-left transition hover:bg-slate-100"
             >
-              <FileText className="h-5 w-5 text-slate-700" />
+              <FileTextIcon className="h-5 w-5 text-slate-700" />
               <p className="mt-3 text-sm font-semibold">Resume</p>
               <p className="mt-1 text-sm text-slate-600">View resume (PDF)</p>
             </a>
-            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
-              <Mail className="h-5 w-5 text-slate-700" />
+            <a
+              href="mailto:kedar.tiwaskar@gmail.com"
+              className="rounded-2xl border border-slate-200 bg-slate-50 p-5 transition hover:bg-slate-100"
+            >
+              <MailIcon className="h-5 w-5 text-slate-700" />
               <p className="mt-3 text-sm font-semibold">Email</p>
               <p className="mt-1 text-sm text-slate-600">kedar.tiwaskar@gmail.com</p>
-            </div>
+            </a>
           </div>
         </div>
-        
       </section>
     </div>
   );
