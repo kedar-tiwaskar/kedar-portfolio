@@ -1,3 +1,8 @@
+"use client";
+import { Analytics, track } from "@vercel/analytics/react";
+const handleResumeClick = () => {
+  track("resume_clicked", { location: "contact_section" });
+};
 function ArrowRightIcon({ className = "h-4 w-4" }: { className?: string }) {
   return (
     <svg
@@ -172,8 +177,27 @@ export default function KedarPortfolio() {
     {
       title: "Chrome Enterprise & ChromeOS redesign",
       text: "Led a cross-functional redesign effort across 5 distributed teams spanning platform, UX, and infrastructure workstreams.",
-    }
+    },
   ];
+
+  const handleResumeClick = () => {
+    track("Resume Clicked", {
+      location: "contact_section",
+      destination: "google_drive_resume",
+    });
+  };
+
+  const handleEmailClick = () => {
+    track("Email Clicked", {
+      location: "contact_section",
+    });
+  };
+
+  const handleLinkedInClick = () => {
+    track("LinkedIn Clicked", {
+      location: "contact_section",
+    });
+  };
 
   return (
     <div
@@ -210,11 +234,10 @@ export default function KedarPortfolio() {
               Technical Program Manager
             </div>
             <h1 className="mt-6 max-w-2xl text-2xl font-semibold leading-snug tracking-tight md:text-3xl">
-Turning complexity into business impact
+              Turning complexity into business impact
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-8 text-slate-600 md:text-lg">
-I lead cross-functional programs by aligning teams, guiding execution, and driving business impact.
-
+              I lead cross-functional programs by aligning teams, guiding execution, and driving business impact.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <a
@@ -238,7 +261,8 @@ I lead cross-functional programs by aligning teams, guiding execution, and drivi
                 <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Experience</p>
                 <p className="mt-2 text-3xl font-semibold">13+ years</p>
                 <p className="mt-2 text-sm leading-7 text-slate-600">
- Quality Engineering | Delivery Leadership | Enterprise Systems | Cross-Functional Execution                </p>
+                  Quality Engineering | Delivery Leadership | Enterprise Systems | Cross-Functional Execution
+                </p>
               </div>
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="rounded-2xl bg-slate-50 p-5 text-center sm:col-span-2">
@@ -350,6 +374,7 @@ I lead cross-functional programs by aligning teams, guiding execution, and drivi
             </div>
             <a
               href="mailto:kedar.tiwaskar@gmail.com"
+              onClick={handleEmailClick}
               className="inline-flex items-center gap-2 rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white"
             >
               <MailIcon className="h-4 w-4" /> Email me
@@ -361,24 +386,29 @@ I lead cross-functional programs by aligning teams, guiding execution, and drivi
               href="https://www.linkedin.com/in/kstiwaskar/"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={handleLinkedInClick}
               className="rounded-2xl border border-slate-200 bg-slate-50 p-5 transition hover:bg-slate-100"
             >
               <LinkIcon className="h-5 w-5 text-slate-700" />
               <p className="mt-3 text-sm font-semibold">LinkedIn</p>
               <p className="mt-1 text-sm text-slate-600">View profile</p>
             </a>
+
             <a
               href="https://drive.google.com/file/d/1wyPv2bxuBUVdtBi2Vxzd_llFXQ8wu8oE/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={handleResumeClick}
               className="block rounded-2xl border border-slate-200 bg-slate-50 p-5 text-left transition hover:bg-slate-100"
             >
               <FileTextIcon className="h-5 w-5 text-slate-700" />
               <p className="mt-3 text-sm font-semibold">Resume</p>
               <p className="mt-1 text-sm text-slate-600">View resume (PDF)</p>
             </a>
+
             <a
               href="mailto:kedar.tiwaskar@gmail.com"
+              onClick={handleEmailClick}
               className="rounded-2xl border border-slate-200 bg-slate-50 p-5 transition hover:bg-slate-100"
             >
               <MailIcon className="h-5 w-5 text-slate-700" />
@@ -388,6 +418,8 @@ I lead cross-functional programs by aligning teams, guiding execution, and drivi
           </div>
         </div>
       </section>
+
+      <Analytics />
     </div>
   );
 }
