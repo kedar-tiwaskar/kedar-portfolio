@@ -1,6 +1,5 @@
 "use client";
-
-import { Analytics } from "@vercel/analytics/next";
+import { Analytics } from "@vercel/analytics/react";
 import { track } from "@vercel/analytics";
 
 function ArrowRightIcon({ className = "h-4 w-4" }: { className?: string }) {
