@@ -1,7 +1,3 @@
-"use client";
-import { Analytics } from "@vercel/analytics/react";
-import { track } from "@vercel/analytics";
-
 function ArrowRightIcon({ className = "h-4 w-4" }: { className?: string }) {
   return (
     <svg
@@ -111,7 +107,7 @@ export default function KedarPortfolio() {
   const caseStudies: CaseStudy[] = [
     {
       title: "Cross-functional Program Execution",
-      label: "Program Delivery",
+      label: "TPM / Execution Leadership / Program Delivery",
       summary:
         "Owned execution across distributed teams by converting fragmented updates into structured plans, clear ownership, and measurable progress across program milestones.",
       details: [
@@ -148,15 +144,19 @@ export default function KedarPortfolio() {
 
   const strengths: string[] = [
     "Technical Program Management",
+    "Program Execution",
     "Cross-functional Delivery",
     "Stakeholder Alignment",
+    "Dependency Management",
     "Release Coordination",
-    "Delivery Governance",
-    "Agile / Scrum Execution",
-    "Onsite-Offshore Collaboration",
+    "Release Readiness",
     "End-to-End QA Strategy",
+    "API & Integration Testing",
+    "SQL Data Validation",
+    "Defect Triage & Root Cause Analysis",
+    "CI/CD Pipeline Integration",
     "Risk and Blocker Management",
-    "Automation Testing",
+    "Agile / Scrum Execution",
     "Offshore Coordination",
   ];
 
@@ -179,30 +179,12 @@ export default function KedarPortfolio() {
     },
   ];
 
-  const handleResumeClick = () => {
-    track("resume_clicked", {
-      location: "contact_section",
-    });
-  };
-
-  const handleEmailClick = () => {
-    track("email_clicked", {
-      location: "contact_section",
-    });
-  };
-
-  const handleLinkedInClick = () => {
-    track("linkedin_clicked", {
-      location: "contact_section",
-    });
-  };
-
   return (
     <div
       className="relative min-h-screen overflow-hidden bg-[#0a0f1c] text-slate-100"
       style={{
         fontFamily:
-          'Satoshi, Inter, sans-serif,"SF Pro Text","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif',
+          '"SF Pro Text","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif',
       }}
     >
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,_rgba(59,130,246,0.18),_transparent_28%),radial-gradient(circle_at_top_right,_rgba(148,163,184,0.12),_transparent_22%),linear-gradient(to_bottom,_#0a0f1c,_#0f172a)]" />
@@ -309,18 +291,20 @@ export default function KedarPortfolio() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-20 md:px-10" id="work">
-       <div className="mb-10 max-w-3xl">
-  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">
-  </p>
+        <div className="mb-10 max-w-3xl">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">
+            Selected Work
+          </p>
 
-  <h2 className="mt-2 text-3xl font-semibold tracking-tight text-white md:text-4xl">
-    Programs and execution stories
-  </h2>
+          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-white md:text-4xl">
+            Programs and execution stories
+          </h2>
 
-  <p className="mt-4 text-sm leading-7 text-slate-400">
-    A few examples that reflect how I lead through coordination, delivery discipline, and stakeholder alignment.
-  </p>
-</div>
+          <p className="mt-4 text-sm leading-7 text-slate-400">
+            A few examples that reflect how I lead through coordination, delivery
+            discipline, and stakeholder alignment.
+          </p>
+        </div>
 
         <div className="space-y-6">
           {caseStudies.map((study) => (
@@ -369,10 +353,15 @@ export default function KedarPortfolio() {
               Profile
             </p>
             <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white">
-Execution leadership grounded in engineering depth
+              Execution leadership grounded in engineering depth
             </h2>
             <p className="mt-5 text-sm leading-8 text-slate-400">
-              I combine quality engineering rigor with program management discipline to drive predictable delivery across complex, high-dependency systems. With hands-on experience in API validation, SQL-level troubleshooting, and cross-team coordination, I bridge technical execution with program leadership — ensuring risks are surfaced early and releases stay stable.            </p>
+              I combine quality engineering rigor with program management discipline
+              to drive predictable delivery across complex, high-dependency systems.
+              With hands-on experience in API validation, SQL-level troubleshooting,
+              and cross-team coordination, I bridge technical execution with program
+              leadership — ensuring risks are surfaced early and releases stay stable.
+            </p>
           </div>
 
           <div className="rounded-[30px] border border-white/10 bg-white/5 p-8 shadow-[0_10px_30px_rgba(0,0,0,0.25)] backdrop-blur-xl">
@@ -411,7 +400,6 @@ Execution leadership grounded in engineering depth
 
             <a
               href="mailto:kedar.tiwaskar@gmail.com"
-              onClick={handleEmailClick}
               className="inline-flex items-center gap-2 rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-100"
             >
               <MailIcon className="h-4 w-4" /> Email me
@@ -423,7 +411,6 @@ Execution leadership grounded in engineering depth
               href="https://www.linkedin.com/in/kstiwaskar/"
               target="_blank"
               rel="noopener noreferrer"
-              onClick={handleLinkedInClick}
               className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 transition hover:bg-white/[0.08]"
             >
               <LinkIcon className="h-5 w-5 text-slate-300" />
@@ -435,7 +422,6 @@ Execution leadership grounded in engineering depth
               href="https://drive.google.com/file/d/1wyPv2bxuBUVdtBi2Vxzd_llFXQ8wu8oE/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
-              onClick={handleResumeClick}
               className="block rounded-2xl border border-white/10 bg-white/[0.04] p-5 text-left transition hover:bg-white/[0.08]"
             >
               <FileTextIcon className="h-5 w-5 text-slate-300" />
@@ -445,7 +431,6 @@ Execution leadership grounded in engineering depth
 
             <a
               href="mailto:kedar.tiwaskar@gmail.com"
-              onClick={handleEmailClick}
               className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 transition hover:bg-white/[0.08]"
             >
               <MailIcon className="h-5 w-5 text-slate-300" />
@@ -455,8 +440,6 @@ Execution leadership grounded in engineering depth
           </div>
         </div>
       </section>
-
-      <Analytics />
     </div>
   );
 }
