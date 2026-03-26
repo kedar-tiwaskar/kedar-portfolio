@@ -1,8 +1,8 @@
 "use client";
-import { Analytics, track } from "@vercel/analytics/react";
-const handleResumeClick = () => {
-  track("resume_clicked", { location: "contact_section" });
-};
+
+import { Analytics } from "@vercel/analytics/next";
+import { track } from "@vercel/analytics";
+
 function ArrowRightIcon({ className = "h-4 w-4" }: { className?: string }) {
   return (
     <svg
@@ -112,7 +112,7 @@ export default function KedarPortfolio() {
   const caseStudies: CaseStudy[] = [
     {
       title: "Cross-functional Program Execution",
-      label: "TPM / Execution Leadership / Program Delivery",
+      label: "Program Delivery",
       summary:
         "Owned execution across distributed teams by converting fragmented updates into structured plans, clear ownership, and measurable progress across program milestones.",
       details: [
@@ -152,13 +152,16 @@ export default function KedarPortfolio() {
     "Cross-functional Delivery",
     "Stakeholder Alignment",
     "Release Coordination",
+    "Delivery Governance",
+    "Agile / Scrum Execution",
+    "Onsite-Offshore Collaboration",
     "End-to-End QA Strategy",
     "Risk and Blocker Management",
     "Automation Testing",
     "Offshore Coordination",
   ];
 
-  const principles: Principle[] = [
+  const approachCards: Principle[] = [
     {
       title: "Create structure from ambiguity",
       text: "I break complex, cross-team work into clear priorities, owners, dependencies, and visible next steps.",
@@ -171,9 +174,6 @@ export default function KedarPortfolio() {
       title: "Drive alignment with clarity",
       text: "I simplify communication across technical, business, client, and offshore stakeholders so work moves forward with less friction.",
     },
-  ];
-
-  const showcasePoints: Principle[] = [
     {
       title: "Chrome Enterprise & ChromeOS redesign",
       text: "Led a cross-functional redesign effort across 5 distributed teams spanning platform, UX, and infrastructure workstreams.",
@@ -181,48 +181,50 @@ export default function KedarPortfolio() {
   ];
 
   const handleResumeClick = () => {
-    track("Resume Clicked", {
+    track("resume_clicked", {
       location: "contact_section",
-      destination: "google_drive_resume",
     });
   };
 
   const handleEmailClick = () => {
-    track("Email Clicked", {
+    track("email_clicked", {
       location: "contact_section",
     });
   };
 
   const handleLinkedInClick = () => {
-    track("LinkedIn Clicked", {
+    track("linkedin_clicked", {
       location: "contact_section",
     });
   };
 
   return (
     <div
-      className="min-h-screen bg-[#f8fafc] text-slate-900"
+      className="relative min-h-screen overflow-hidden bg-[#0a0f1c] text-slate-100"
       style={{
         fontFamily:
-          '"SF Pro Text","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif',
+          'Satoshi, Inter, sans-serif,"SF Pro Text","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif',
       }}
     >
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,_rgba(59,130,246,0.18),_transparent_28%),radial-gradient(circle_at_top_right,_rgba(148,163,184,0.12),_transparent_22%),linear-gradient(to_bottom,_#0a0f1c,_#0f172a)]" />
+
       <section className="mx-auto max-w-7xl px-6 pb-20 pt-8 md:px-10 md:pb-28 md:pt-10">
-        <header className="sticky top-4 z-50 flex items-center justify-between rounded-full border border-slate-200 bg-white/90 px-5 py-3 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-white/80">
-          <div className="text-sm font-bold uppercase tracking-[0.18em] text-slate-600">
+        <header className="sticky top-4 z-50 flex items-center justify-between rounded-full border border-white/10 bg-white/5 px-5 py-3 shadow-[0_8px_30px_rgba(0,0,0,0.25)] backdrop-blur-xl">
+          <div className="text-sm font-bold uppercase tracking-[0.18em] text-slate-300">
             Kedar Tiwaskar
           </div>
-          <nav className="hidden gap-6 text-sm font-bold text-slate-600 md:flex">
-            <a href="#work" className="transition hover:text-slate-900">
+
+          <nav className="hidden gap-6 text-sm font-bold text-slate-400 md:flex">
+            <a href="#work" className="transition hover:text-white">
               Work
             </a>
-            <a href="#approach" className="transition hover:text-slate-900">
+            <a href="#approach" className="transition hover:text-white">
               Approach
             </a>
-            <a href="#skills" className="transition hover:text-slate-900">
+            <a href="#skills" className="transition hover:text-white">
               Skills
             </a>
-            <a href="#contact" className="transition hover:text-slate-900">
+            <a href="#contact" className="transition hover:text-white">
               Contact
             </a>
           </nav>
@@ -230,44 +232,58 @@ export default function KedarPortfolio() {
 
         <div className="mt-14 grid gap-10 md:grid-cols-[1.2fr_0.8fr] md:items-end">
           <div>
-            <div className="inline-flex items-center rounded-full bg-slate-100 px-4 py-2 text-xs font-medium uppercase tracking-[0.2em] text-slate-600">
+            <div className="inline-flex items-center rounded-full border border-blue-400/20 bg-blue-400/10 px-4 py-2 text-xs font-medium uppercase tracking-[0.2em] text-blue-200">
               Technical Program Manager
             </div>
-            <h1 className="mt-6 max-w-2xl text-2xl font-semibold leading-snug tracking-tight md:text-3xl">
-              Turning complexity into business impact
+
+            <h1 className="mt-6 max-w-3xl text-4xl font-semibold leading-tight tracking-tight text-white md:text-6xl">
+              Turning complexity into
+              <span className="block text-slate-300">business impact</span>
             </h1>
-            <p className="mt-6 max-w-2xl text-base leading-8 text-slate-600 md:text-lg">
-              I lead cross-functional programs by aligning teams, guiding execution, and driving business impact.
+
+            <p className="mt-6 max-w-2xl text-base leading-8 text-slate-400 md:text-lg">
+              I lead cross-functional programs by aligning teams, guiding execution,
+              and driving business impact across high-dependency environments.
             </p>
+
             <div className="mt-8 flex flex-wrap gap-4">
               <a
                 href="#work"
-                className="inline-flex items-center gap-2 rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-slate-950 shadow-lg transition hover:-translate-y-0.5 hover:bg-slate-100"
               >
                 View portfolio <ArrowRightIcon className="h-4 w-4" />
               </a>
+
               <a
                 href="#contact"
-                className="rounded-2xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-100"
+                className="rounded-2xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
               >
                 Contact me
               </a>
             </div>
           </div>
 
-          <div className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
+          <div className="rounded-[28px] border border-white/10 bg-white/5 p-6 shadow-[0_10px_40px_rgba(0,0,0,0.3)] backdrop-blur-xl">
             <div className="grid gap-4">
-              <div className="rounded-2xl bg-slate-50 p-5">
-                <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Experience</p>
-                <p className="mt-2 text-3xl font-semibold">13+ years</p>
-                <p className="mt-2 text-sm leading-7 text-slate-600">
-                  Quality Engineering | Delivery Leadership | Enterprise Systems | Cross-Functional Execution
+              <div className="rounded-2xl border border-white/8 bg-white/[0.04] p-5">
+                <p className="text-xs uppercase tracking-[0.2em] text-slate-400">
+                  Experience
+                </p>
+                <p className="mt-2 text-3xl font-semibold text-white">13+ years</p>
+                <p className="mt-2 text-sm leading-7 text-slate-400">
+                  Quality Engineering | Delivery Leadership | Enterprise Systems |
+                  Cross-Functional Execution
                 </p>
               </div>
+
               <div className="grid gap-4 sm:grid-cols-2">
-                <div className="rounded-2xl bg-slate-50 p-5 text-center sm:col-span-2">
-                  <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Program Impact</p>
-                  <p className="mt-2 text-lg font-semibold">$1M+ portfolio delivered</p>
+                <div className="rounded-2xl border border-white/8 bg-white/[0.04] p-5 text-center sm:col-span-2">
+                  <p className="text-xs uppercase tracking-[0.2em] text-slate-400">
+                    Program Impact
+                  </p>
+                  <p className="mt-2 text-lg font-semibold text-white">
+                    $1M+ portfolio delivered
+                  </p>
                 </div>
               </div>
             </div>
@@ -275,58 +291,69 @@ export default function KedarPortfolio() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-6 md:px-10" id="approach">
-        <div className="grid gap-6 md:grid-cols-3">
-          {principles.map((item) => (
-            <div key={item.title} className="rounded-[28px] border border-slate-200 bg-white p-7 shadow-sm">
-              <p className="text-lg font-semibold">{item.title}</p>
-              <p className="mt-3 text-sm leading-7 text-slate-600">{item.text}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-6 py-8 text-center md:px-10">
-        <div className="mb-6"></div>
-        <div className="grid gap-6 md:grid-cols-3">
-          {showcasePoints.map((item) => (
-            <div key={item.title} className="rounded-[28px] border border-slate-200 bg-white p-7 shadow-sm text-center">
-              <p className="text-lg font-semibold">{item.title}</p>
-              <p className="mt-3 text-sm leading-7 text-slate-600">{item.text}</p>
+      <section className="mx-auto max-w-7xl px-6 py-8 md:px-10" id="approach">
+        <div className="grid gap-6 md:grid-cols-2">
+          {approachCards.map((item, index) => (
+            <div
+              key={item.title}
+              className={`rounded-[28px] p-7 shadow-[0_10px_30px_rgba(0,0,0,0.22)] backdrop-blur-xl ${
+                index === 3
+                  ? "border border-blue-400/15 bg-gradient-to-br from-blue-500/10 to-white/[0.03]"
+                  : "border border-white/10 bg-white/5"
+              }`}
+            >
+              <p className="text-lg font-semibold text-white">{item.title}</p>
+              <p className="mt-3 text-sm leading-7 text-slate-400">{item.text}</p>
             </div>
           ))}
         </div>
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-20 md:px-10" id="work">
-        <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">Selected Work</p>
-            <h2 className="mt-2 text-3xl font-semibold tracking-tight md:text-4xl">
-              Programs and execution stories
-            </h2>
-          </div>
-          <p className="max-w-2xl text-sm leading-7 text-slate-600">
-            A few examples that reflect how I lead through coordination, delivery discipline, and stakeholder alignment.
-          </p>
-        </div>
+       <div className="mb-10 max-w-3xl">
+  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">
+  </p>
+
+  <h2 className="mt-2 text-3xl font-semibold tracking-tight text-white md:text-4xl">
+    Programs and execution stories
+  </h2>
+
+  <p className="mt-4 text-sm leading-7 text-slate-400">
+    A few examples that reflect how I lead through coordination, delivery discipline, and stakeholder alignment.
+  </p>
+</div>
 
         <div className="space-y-6">
           {caseStudies.map((study) => (
-            <div key={study.title} className="rounded-[32px] border border-slate-200 bg-white p-8 shadow-sm">
+            <div
+              key={study.title}
+              className="rounded-[32px] border border-white/10 bg-white/5 p-8 shadow-[0_12px_40px_rgba(0,0,0,0.28)] backdrop-blur-xl"
+            >
               <div className="grid gap-8 md:grid-cols-[0.9fr_1.1fr]">
                 <div>
                   {study.label ? (
-                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">{study.label}</p>
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+                      {study.label}
+                    </p>
                   ) : null}
-                  <h3 className="mt-3 text-2xl font-semibold whitespace-pre-line">{study.title}</h3>
-                  <p className="mt-4 text-sm leading-8 text-slate-600">{study.summary}</p>
+
+                  <h3 className="mt-3 whitespace-pre-line text-2xl font-semibold text-white">
+                    {study.title}
+                  </h3>
+
+                  <p className="mt-4 text-sm leading-8 text-slate-400">
+                    {study.summary}
+                  </p>
                 </div>
+
                 <div className="grid gap-4">
                   {study.details.map((detail) => (
-                    <div key={detail} className="flex gap-3 rounded-2xl bg-slate-50 p-4">
-                      <CheckCircleIcon className="mt-0.5 h-5 w-5 shrink-0 text-slate-700" />
-                      <p className="text-sm leading-7 text-slate-700">{detail}</p>
+                    <div
+                      key={detail}
+                      className="flex gap-3 rounded-2xl border border-white/8 bg-white/[0.04] p-4"
+                    >
+                      <CheckCircleIcon className="mt-0.5 h-5 w-5 shrink-0 text-blue-300" />
+                      <p className="text-sm leading-7 text-slate-300">{detail}</p>
                     </div>
                   ))}
                 </div>
@@ -338,21 +365,26 @@ export default function KedarPortfolio() {
 
       <section className="mx-auto max-w-7xl px-6 py-6 md:px-10" id="skills">
         <div className="grid gap-8 md:grid-cols-[0.9fr_1.1fr] md:items-start">
-          <div className="rounded-[30px] border border-slate-200 bg-white p-8 shadow-sm">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">Profile</p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight">Built for high-dependency environments</h2>
-            <p className="mt-5 text-sm leading-8 text-slate-600">
-              My experience spans QA, automation, delivery management, and enterprise coordination, helping bridge strategy with execution.
+          <div className="rounded-[30px] border border-white/10 bg-white/5 p-8 shadow-[0_10px_30px_rgba(0,0,0,0.25)] backdrop-blur-xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">
+              Profile
             </p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white">
+Execution leadership grounded in engineering depth
+            </h2>
+            <p className="mt-5 text-sm leading-8 text-slate-400">
+              I combine quality engineering rigor with program management discipline to drive predictable delivery across complex, high-dependency systems. With hands-on experience in API validation, SQL-level troubleshooting, and cross-team coordination, I bridge technical execution with program leadership — ensuring risks are surfaced early and releases stay stable.            </p>
           </div>
 
-          <div className="rounded-[30px] border border-slate-200 bg-white p-8 shadow-sm">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">Core Skills</p>
+          <div className="rounded-[30px] border border-white/10 bg-white/5 p-8 shadow-[0_10px_30px_rgba(0,0,0,0.25)] backdrop-blur-xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">
+              Core Skills
+            </p>
             <div className="mt-6 flex flex-wrap gap-3">
               {strengths.map((skill) => (
                 <span
                   key={skill}
-                  className="rounded-full border border-slate-300 bg-slate-50 px-4 py-2 text-sm text-slate-700"
+                  className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-slate-300"
                 >
                   {skill}
                 </span>
@@ -363,19 +395,25 @@ export default function KedarPortfolio() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 pb-24 pt-20 md:px-10" id="contact">
-        <div className="rounded-[34px] border border-slate-200 bg-white p-8 shadow-sm md:p-10">
+        <div className="rounded-[34px] border border-white/10 bg-gradient-to-br from-white/[0.06] to-blue-500/[0.06] p-8 shadow-[0_14px_50px_rgba(0,0,0,0.32)] backdrop-blur-xl md:p-10">
           <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">Contact</p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">Open to TPM opportunities</h2>
-              <p className="mt-5 max-w-2xl text-sm leading-8 text-slate-600">
-                Interested in roles focused on technical program management, enterprise delivery, and cross-functional execution.
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">
+                Contact
+              </p>
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white md:text-4xl">
+                Open to TPM opportunities
+              </h2>
+              <p className="mt-5 max-w-2xl text-sm leading-8 text-slate-400">
+                Interested in roles focused on technical program management,
+                enterprise delivery, and cross-functional execution.
               </p>
             </div>
+
             <a
               href="mailto:kedar.tiwaskar@gmail.com"
               onClick={handleEmailClick}
-              className="inline-flex items-center gap-2 rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white"
+              className="inline-flex items-center gap-2 rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-100"
             >
               <MailIcon className="h-4 w-4" /> Email me
             </a>
@@ -387,11 +425,11 @@ export default function KedarPortfolio() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleLinkedInClick}
-              className="rounded-2xl border border-slate-200 bg-slate-50 p-5 transition hover:bg-slate-100"
+              className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 transition hover:bg-white/[0.08]"
             >
-              <LinkIcon className="h-5 w-5 text-slate-700" />
-              <p className="mt-3 text-sm font-semibold">LinkedIn</p>
-              <p className="mt-1 text-sm text-slate-600">View profile</p>
+              <LinkIcon className="h-5 w-5 text-slate-300" />
+              <p className="mt-3 text-sm font-semibold text-white">LinkedIn</p>
+              <p className="mt-1 text-sm text-slate-400">View profile</p>
             </a>
 
             <a
@@ -399,21 +437,21 @@ export default function KedarPortfolio() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleResumeClick}
-              className="block rounded-2xl border border-slate-200 bg-slate-50 p-5 text-left transition hover:bg-slate-100"
+              className="block rounded-2xl border border-white/10 bg-white/[0.04] p-5 text-left transition hover:bg-white/[0.08]"
             >
-              <FileTextIcon className="h-5 w-5 text-slate-700" />
-              <p className="mt-3 text-sm font-semibold">Resume</p>
-              <p className="mt-1 text-sm text-slate-600">View resume (PDF)</p>
+              <FileTextIcon className="h-5 w-5 text-slate-300" />
+              <p className="mt-3 text-sm font-semibold text-white">Resume</p>
+              <p className="mt-1 text-sm text-slate-400">View resume (PDF)</p>
             </a>
 
             <a
               href="mailto:kedar.tiwaskar@gmail.com"
               onClick={handleEmailClick}
-              className="rounded-2xl border border-slate-200 bg-slate-50 p-5 transition hover:bg-slate-100"
+              className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 transition hover:bg-white/[0.08]"
             >
-              <MailIcon className="h-5 w-5 text-slate-700" />
-              <p className="mt-3 text-sm font-semibold">Email</p>
-              <p className="mt-1 text-sm text-slate-600">kedar.tiwaskar@gmail.com</p>
+              <MailIcon className="h-5 w-5 text-slate-300" />
+              <p className="mt-3 text-sm font-semibold text-white">Email</p>
+              <p className="mt-1 text-sm text-slate-400">kedar.tiwaskar@gmail.com</p>
             </a>
           </div>
         </div>
